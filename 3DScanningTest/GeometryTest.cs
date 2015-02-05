@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Drawing;
-using PixelMatchingTest;
+using Scanning;
 
 namespace _3DScanningTest
 {

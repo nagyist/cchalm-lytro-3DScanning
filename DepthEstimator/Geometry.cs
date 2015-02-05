@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
 
-namespace PixelMatchingTest
+namespace Scanning
 {
     public static class Geometry
     {
@@ -33,8 +33,8 @@ namespace PixelMatchingTest
 
             // By policy, infinite enter distances are positive, and infinite exit distances are 
             // negative
-            EnterLeavePair intersectX = RayLineIntersect(rayPos.X, rayStep.X, left, right);
-            EnterLeavePair intersectY = RayLineIntersect(rayPos.Y, rayStep.Y, top, bottom);
+            EnterLeavePair intersectX = RayLineIntersect1D(rayPos.X, rayStep.X, left, right);
+            EnterLeavePair intersectY = RayLineIntersect1D(rayPos.Y, rayStep.Y, top, bottom);
 
             // We should take the number of steps that gets us to the furthest away entry point
             double maxStepsToEnter = Math.Max(intersectX.Enter, intersectY.Enter);
@@ -71,7 +71,7 @@ namespace PixelMatchingTest
         // FIXME better comment, public?
         // one-dimensional ray intersecting with a line segment, entry and exit distances weighted
         // by step length
-        private static EnterLeavePair RayLineIntersect(double rayPos, double rayStep, 
+        private static EnterLeavePair RayLineIntersect1D(double rayPos, double rayStep, 
             int low, int high)
         {
             double distToLow = (low - rayPos) / rayStep;

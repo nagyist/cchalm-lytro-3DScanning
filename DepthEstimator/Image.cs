@@ -8,7 +8,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace PixelMatchingTest
+namespace Scanning
 {
     // A simple representation of an image. Stores image data as an array of bytes as well as the
     // image's width, height, and number of bytes per pixel. Images are immutable by policy but
@@ -122,6 +122,12 @@ namespace PixelMatchingTest
         }
 
         public bool Contains(Point2Df pt)
+        {
+            return (pt.X >= 0) && (pt.Y >= 0) &&
+                   (pt.X < this.Width - 1) && (pt.Y < this.Height - 1);
+        }
+
+        public bool ContainsLoose(Point2Df pt)
         {
             return (pt.X > -0.5) && (pt.Y > -0.5) && 
                    (pt.X < this.Width - 0.5) && (pt.Y < this.Height - 0.5);

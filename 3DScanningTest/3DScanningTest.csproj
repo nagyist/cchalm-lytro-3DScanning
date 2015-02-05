@@ -56,7 +56,7 @@
     <Compile Include="SceneViewTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PixelMatchingTest\DepthEstimator.csproj">
+    <ProjectReference Include="..\DepthEstimator\DepthEstimator.csproj">
       <Project>{aafa79b6-96bf-45f3-a0cb-7b5db1a11dc7}</Project>
       <Name>DepthEstimator</Name>
     </ProjectReference>

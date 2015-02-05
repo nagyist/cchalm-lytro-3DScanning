@@ -17,7 +17,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.IO;
 
-namespace PixelMatchingTest
+namespace Scanning
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -31,8 +31,7 @@ namespace PixelMatchingTest
 
         private unsafe void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LaunchPad test = new LaunchPad();
-            double[][] depthMap = test.GetDepths();
+            double[][] depthMap = LaunchPad.GetDepthMap_Grid();
 
             int width = depthMap[0].Length;
             int height = depthMap.Length;
@@ -46,7 +45,7 @@ namespace PixelMatchingTest
                 {
                     double depth = depthMap[y][x];
 
-                    if (depth != DepthEstimator.INVALID_DEPTH && !double.IsInfinity(depth))
+                    if (depth != DepthEstimator.Constants.InvalidDepth && !double.IsInfinity(depth))
                     {
                         if (depth > maxDepth)
                             maxDepth = depth;
@@ -67,7 +66,7 @@ namespace PixelMatchingTest
                 {
                     double depth = depthMap[y][x];
 
-                    if (depth == LytroDepthEstimator.Constants.InvalidDepth)
+                    if (depth == DepthEstimator.Constants.InvalidDepth)
                         depthBuffer[index] = 0;
                     else if (double.IsInfinity(depth))
                         depthBuffer[index] = byte.MaxValue;

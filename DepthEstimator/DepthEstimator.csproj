@@ -7,8 +7,8 @@
     <ProjectGuid>{AAFA79B6-96BF-45F3-A0CB-7B5DB1A11DC7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PixelMatchingTest</RootNamespace>
-    <AssemblyName>PixelMatchingTest</AssemblyName>
+    <RootNamespace>Scanning</RootNamespace>
+    <AssemblyName>3DScanning</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -58,12 +58,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DepthEstimator.cs" />
+    <Compile Include="Freezable.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="LaunchPad.cs" />
     <Compile Include="Lytro.cs" />
-    <Compile Include="LytroDepthEstimatorOld.cs" />
-    <Compile Include="LytroDepthEstimator.cs" />
     <Compile Include="Geometry.cs" />
+    <Compile Include="Scanline.cs" />
     <Compile Include="SceneView.cs" />
     <Compile Include="Util.cs" />
     <Page Include="MainWindow.xaml">

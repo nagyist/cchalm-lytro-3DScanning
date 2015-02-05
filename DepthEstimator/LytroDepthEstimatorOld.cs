@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace PixelMatchingTest
+namespace Scanning
 {
     // A DepthEstimator extension that uses knowledge of the Lytro to perform preprocessing
     // of necessary point/vector transformations.

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace PixelMatchingTest
+namespace Scanning
 {
     // Tuples are immutable
     using Pixel = Tuple<byte, byte, byte>;
@@ -42,10 +42,10 @@ namespace PixelMatchingTest
         private readonly Point2Df fieldOfView;
         private readonly double distanceToImagePlane;
 
-        public SceneView(Image perspectiveImage, Point3Df centerOfProjection, 
+        public SceneView(Image img, Point3Df centerOfProjection, 
             Point3Df orientation, double verticalFOV, double horizontalFOV)
         {
-            this.img = perspectiveImage;
+            this.img = img;
 
             this.centerOfProjection = centerOfProjection;
             this.orientation = orientation;
@@ -66,7 +66,7 @@ namespace PixelMatchingTest
         public Point3Df ProjectToWorld(Point2Df ptToProject, double depth)
         {
             // The 3D position of the pixel in question, in the coordinate system of the camera
-            Point3Df projectedPt = ConvertToWorld(ptToProject);
+            Point3Df projectedPt = ConvertToWorld3D(ptToProject);
 
             // Projection scale factor (for projecting out into the 3D space along a line of
             // possible depths).
@@ -126,11 +126,16 @@ namespace PixelMatchingTest
         // CHECKME add version of this method that returns a Point2Df so we don't have to cast?
         // Converts the passed image location in a top-left coordinate system to the equivalent
         // world coordinates
-        public Point3Df ConvertToWorld(Point2Df imageLoc)
+        public Point3Df ConvertToWorld3D(Point2Df imageLoc)
         {
-            return new Point3Df(imageLoc.X - (double)(Image.Width - 1) / 2,
-                                (double)(Image.Height - 1) / 2 - imageLoc.Y,
+            return new Point3Df(ConvertToWorld2D(imageLoc),
                                 DistanceToImagePlane);
+        }
+
+        public Point2Df ConvertToWorld2D(Point2Df imageLoc)
+        {
+            return new Point2Df(imageLoc.X - (double)(Image.Width - 1) / 2,
+                                (double)(Image.Height - 1) / 2 - imageLoc.Y);
         }
 
         // Assumes the passed point is on the image plane and converts it to a 2D point in the

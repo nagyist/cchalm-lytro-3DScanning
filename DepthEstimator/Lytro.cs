@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
 
-namespace PixelMatchingTest
+namespace Scanning
 {
     // A static wrapper class for Lytro constants and utilities
     public class Lytro
@@ -31,7 +31,7 @@ namespace PixelMatchingTest
             public const int usedNumSubImgs = usedArrayHeight * usedArrayWidth;
 
             // CHECKME this is an estimate
-            public const double FieldOfView = 48.0 / 180 * Math.PI;
+            public const double FieldOfView = 60.0 / 180 * Math.PI;
 
             public readonly static Point3Df Orientation = new Point3Df(0, 0, 1);
         }
